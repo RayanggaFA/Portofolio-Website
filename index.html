@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rayangga Fariansyah Arkanda</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Hero Section -->
+  <div class="hero-section fade-in">
+    <div class="overlay"></div>
+
+    <!-- RF di pojok kiri atas -->
+    <div class="initials">RF</div>
+
+    <!-- Konten utama -->
+    <div class="hero-content">
+      <h1 class="name">Rayangga Fariansyah Arkanda</h1>
+      <p class="major">Informatic Engineering</p>
+      <a href="#about" class="cta-button">Selengkapnya</a>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" onclick="scrollToAbout()">
+      Scroll untuk melihat lebih banyak
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <div class="about-content slide-in-left">
+        <h2 class="about-title">Kenali Saya<br>Lebih Dekat</h2>
+        <p class="about-description">
+          Mahasiswa Informatika yang antusias dalam bidang Fotografi, UI/UX, Frontend, Web Development, serta pengembangan perangkat lunak. Memiliki pengalaman magang dan proyek nyata dalam desain antarmuka pengguna, manajemen proyek, dan pengembangan web. Aktif mempelajari teknologi baru serta memiliki portofolio sertifikasi yang mendukung pengembangan profesional di bidang IT dan software engineering.
+        </p>
+      </div>
+      <div class="about-image slide-in-right">
+        <img src="Kenali.jpg" alt="Profile Photo" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Section -->
+  <section id="blog" class="blog-section">
+    <div class="blog-container">
+      <div class="blog-left slide-in-left">
+        <h2 class="blog-title">Konten dalam<br>Blog Saya</h2>
+        <a href="#" class="blog-button">IKUTI SAYA</a>
+      </div>
+      <div class="blog-right slide-in-right">
+        <div class="blog-item">
+          <div class="blog-image">
+            <img src="Project.jpg" alt="Riwayat Projek" />
+          </div>
+          <div class="blog-content">
+            <h3>Riwayat Projek</h3>
+            <p>Temukan Projek apa saja yang sudah saya kerjakan</p>
+          </div>
+        </div>
+        
+        <div class="blog-item">
+          <div class="blog-image">
+            <img src="Mastery.jpg" alt="Keahlian" />
+          </div>
+          <div class="blog-content">
+            <h3>Keahlian</h3>
+            <p>Lihat keahlian apa saja yang saya kuasai</p>
+          </div>
+        </div>
+        
+        <div class="blog-item">
+          <div class="blog-image">
+            <img src="Contact.jpg" alt="Contact" />
+          </div>
+          <div class="blog-content">
+            <h3>Contact</h3>
+            <p>Hubungi saya jika ingin berkolaborasi</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function scrollToAbout() {
+      document.getElementById('about').scrollIntoView({ 
+        behavior: 'smooth' 
+      });
+    }
+
+    // Animate elements on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('slide-in-left')) {
+            entry.target.style.animation = 'slideInLeft 1s ease-out forwards';
+          } else if (entry.target.classList.contains('slide-in-right')) {
+            entry.target.style.animation = 'slideInRight 1s ease-out forwards';
+          }
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.slide-in-left, .slide-in-right').forEach(el => {
+      el.style.opacity = '0';
+      observer.observe(el);
+    });
+
+    // Smooth scroll for CTA button
+    document.querySelector('.cta-button').addEventListener('click', function(e) {
+      e.preventDefault();
+      scrollToAbout();
+    });
+  </script>
+</body>
+</html>
